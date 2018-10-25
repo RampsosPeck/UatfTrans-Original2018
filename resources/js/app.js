@@ -40,6 +40,8 @@ Vue.use(VueProgressBar, {
 let routes = [
     { path: '/dashboard', component: require('./components/Dashboard.vue') },
     { path: '/scan', component: require('./components/Scan.vue') },
+    { path: '/developer', component: require('./components/Developer.vue') },
+    { path: '/android', component: require('./components/Android.vue') },
     { path: '/users', component: require('./components/User.vue') }
   ]
 
@@ -57,6 +59,23 @@ Vue.filter('myDate', function(created){
 });
 
 window.Fire = new Vue();
+
+
+Vue.component(
+    'passport-clients',
+    require('./components/passport/Clients.vue')
+);
+
+Vue.component(
+    'passport-authorized-clients',
+    require('./components/passport/AuthorizedClients.vue')
+);
+
+Vue.component(
+    'passport-personal-access-tokens',
+    require('./components/passport/PersonalAccessTokens.vue')
+);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

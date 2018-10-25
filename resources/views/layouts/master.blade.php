@@ -191,10 +191,12 @@
                 </router-link>
               </li>
               <li class="nav-item" style="text-align:center; ">
-                <a href="#" class="nav-link">
-                  <i class="fa fa-credit-card teal"></i>
-                  <p>Tarjetas</p>
-                </a>
+                  <router-link to="/developer" class="nav-link">
+                      <i class="nav-icon fab fa-android cyan"></i>
+                      <p>
+                      Developer
+                      </p> 
+                  </router-link>
               </li>
             </ul>
           </li>
@@ -237,7 +239,7 @@
                   <span class="right badge badge-info">IT</span>
                   </p> 
               </router-link>
-          </li> 
+          </li>  
           <li class="nav-item"> 
               <a class="nav-link" href="{{ route('logout') }}"
                   onclick="event.preventDefault();
