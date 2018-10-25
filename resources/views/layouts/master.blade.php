@@ -1,17 +1,16 @@
-
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
-<html lang="en">
+ 
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="Sistema de Transporte Universitario de la Universidad Autónoma Tomás Frías">
+  <meta name="author" content="Ing. Jorge Peralta">
+  <meta name="keyword" content="Sistema de transporte U.A.T.F., Sistema de transporte Universitario">
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>AdminLTE 3 | Starter</title>
+  <title>{{ config('app.name', 'Laravel') }}</title> 
  
   <link rel="stylesheet" href="/css/app.css">
   
@@ -20,7 +19,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <div class="wrapper" id="app">
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
+  <nav class="main-header navbar navbar-expand navbar-light border-bottom">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -145,8 +144,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="/img/dashboard.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
+      <img src="/img/uatf.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+           style="opacity: .9">
       <span class="brand-text font-weight-light">UATFTRANS</span>
     </a>
 
@@ -185,40 +184,72 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link ">
-                  <i class="fa fa-circle-o nav-icon"></i>
+              <li class="nav-item" style="text-align:center; ">
+                <router-link to="/users" class="nav-link ">
+                  <i class="fa fa-users teal"></i>
                   <p>Usuarios</p>
-                </a>
+                </router-link>
               </li>
-              <li class="nav-item">
+              <li class="nav-item" style="text-align:center; ">
                 <a href="#" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Inactive Page</p>
+                  <i class="fa fa-credit-card teal"></i>
+                  <p>Tarjetas</p>
                 </a>
               </li>
             </ul>
           </li>
-            <li class="nav-item">
-                <router-link to="/profile" class="nav-link">
-                    <i class="nav-icon fas fa-user orange"></i>
-                    <p>
-                    Profile
-                    </p>
-                </router-link>
-            </li> 
-            <li class="nav-item"> 
-                <a class="nav-link" href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
-                                    <i class="nav-icon fas fa-power-off red"></i>
-                    <p> {{ __('Logout') }} </p>
-                </a>
-    
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
-            </li>
+          <li class="nav-item">
+              <router-link to="/scan" class="nav-link">
+                  <i class="nav-icon fas fa-eye yellow"></i>
+                  <p>
+                  Escanear Código QR
+                  </p>
+              </router-link>
+          </li>
+          <li class="nav-item">
+              <router-link to="/scan" class="nav-link">
+                  <i class="nav-icon fas fa-qrcode orange"></i>
+                  <p>Mi código QR</p>
+              </router-link>
+          </li> 
+          <li class="nav-item">
+              <router-link to="/reporte" class="nav-link">
+                  <i class="nav-icon fas fa-chart-pie purple"></i>
+                  <p>
+                  Reportes
+                  </p>
+              </router-link>
+          </li>
+          <li class="nav-item">
+              <router-link to="/help" class="nav-link">
+                  <i class="nav-icon fas fa-hands-helping pink"></i>
+                  <p>
+                  Ayuda
+                  <span class="right badge badge-danger">PDF</span>
+                  </p> 
+              </router-link>
+          </li>
+          <li class="nav-item">
+              <router-link to="/android" class="nav-link">
+                  <i class="nav-icon fab fa-android cyan"></i>
+                  <p>
+                  Acerca de...
+                  <span class="right badge badge-info">IT</span>
+                  </p> 
+              </router-link>
+          </li> 
+          <li class="nav-item"> 
+              <a class="nav-link" href="{{ route('logout') }}"
+                  onclick="event.preventDefault();
+                                  document.getElementById('logout-form').submit();">
+                                  <i class="nav-icon fas fa-power-off red"></i>
+                  <p> {{ __('Logout') }} </p>
+              </a>
+  
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+              </form>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -236,6 +267,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="content">
       <div class="container-fluid">
             <router-view></router-view>
+            <vue-progress-bar></vue-progress-bar>
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
@@ -256,10 +288,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <footer class="main-footer">
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">
-      Anything you want
+       <span> Created by <a href="https://www.facebook.com/jorge.peralta.3576224" target="__blanck">Ing. Jorge Peralta</a></span>
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2018 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <span><a href="http://www.uatf.edu.bo/" target="__blanck">U.A.T.F.</a> &copy; {{ date('Y') }}</span>
   </footer>
 </div>
 <!-- ./wrapper -->

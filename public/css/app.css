@@ -14196,7 +14196,7 @@ a.text-muted:hover {
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Nunito", sans-serif;
+  --font-family-sans-serif: "Times New Roman", sans-serif;
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -14235,7 +14235,7 @@ section {
 
 body {
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: "Times New Roman", sans-serif;
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
@@ -20483,7 +20483,7 @@ button.close {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: "Times New Roman", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -20608,7 +20608,7 @@ button.close {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: "Nunito", sans-serif;
+  font-family: "Times New Roman", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -29883,7 +29883,11 @@ readers do not read off random characters that represent icons */
 }
 
 .router-link-exact-active {
-  background-color: #3f51b5;
+  background-color: rgba(0, 52, 102, 0.8);
   color: #fff !important;
+}
+
+.sidebar-dark-primary {
+  background-color: #011620;
 }
 
