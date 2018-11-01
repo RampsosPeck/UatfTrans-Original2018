@@ -39,10 +39,12 @@ Vue.use(VueProgressBar, {
 
 let routes = [
     { path: '/dashboard', component: require('./components/Dashboard.vue') },
-    { path: '/scan', component: require('./components/Scan.vue') },
+    { path: '/users', component: require('./components/User.vue') },
     { path: '/developer', component: require('./components/Developer.vue') },
-    { path: '/android', component: require('./components/Android.vue') },
-    { path: '/users', component: require('./components/User.vue') }
+    { path: '/scan', component: require('./components/Scan.vue') }, 
+    { path: '/report', component: require('./components/Report.vue') },
+    { path: '/help', component: require('./components/Help.vue') },
+    { path: '/android', component: require('./components/Android.vue') }
   ]
 
 const router = new VueRouter({
@@ -50,7 +52,7 @@ const router = new VueRouter({
     routes // short for `routes: routes`
  })
 
-Vue.filter('upText', function(text){
+Vue.filter('upText', function(text){ 
 	return text.charAt(0).toUpperCase() + text.slice(1)
 });
 
@@ -82,9 +84,17 @@ Vue.component(
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('dashboard', require('./components/Dashboard.vue'));
+Vue.component('users', require('./components/User.vue'));
+Vue.component('developer', require('./components/Developer.vue'));
+Vue.component('scan', require('./components/Scan.vue')); 
+Vue.component('report', require('./components/Report.vue'));
+Vue.component('help', require('./components/Help.vue'));
+Vue.component('android', require('./components/Android.vue')); 
 
 const app = new Vue({
     el: '#app',
-    router
+    data : {
+        menu : 0
+    }
 });

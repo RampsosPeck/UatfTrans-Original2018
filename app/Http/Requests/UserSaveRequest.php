@@ -42,10 +42,9 @@ class UserSaveRequest extends FormRequest
                 'entity' => 'required|regex:/^[a-z ñáéíóú -_ . ]+$/i|max:50',
                 'name'    => 'required|regex:/^[a-z ñáéíóú . ]+$/i|max:50',
                 'cedula'  => 'required|regex:/^[0-9 A-Z a-z]+$/i|between:6,10', 
-                'type'    => 'required',  
-                'saldo'  => 'required',
-                'ru'     => 'required|max:10|unique:users,ru',
-                'phone'   => 'required|max:10|unique:users,phone' 
+                'type'    => 'required',   
+                'ru'     => 'required|max:10',
+                'phone'   => 'required|max:10' 
             ];
         }
         return $rules;

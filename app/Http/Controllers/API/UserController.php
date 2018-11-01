@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use Uatftrans\Http\Controllers\Controller;
 use Uatftrans\Http\Requests\UserSaveRequest;
 use Uatftrans\User;
-
+use Uatftrans\Cuenta;
+use DB;
 class UserController extends Controller
 {
     public function __construct()
@@ -32,9 +33,10 @@ class UserController extends Controller
     public function store(UserSaveRequest $request)
     {
         //return ['message' => 'Tengo tus datos come come'];
+        //return $request;
         $response = $request['cedula'].$request['ru'];
 
-        return User::create([
+        $id = DB::table('users')->insertGetId([
             'entity' => $request['entity'],
             'name' => $request['name'],
             'cedula' => $request['cedula'],
@@ -44,7 +46,18 @@ class UserController extends Controller
             'password' => bcrypt($response),
             'type' => $request['type'], 
             'active' => $request['active'],
+            'created_at' => date('Y-m-d H:i:s')
         ]);
+
+        $qrCode=bcrypt($id.'-'.$request->ru.str_random(40));
+
+        Cuenta::create([
+                'QRcode'        => $qrCode,
+                'saldo'         => $request['saldo'],
+                'user_id'   => $id
+            ]);
+ 
+
     }
 
     /**
@@ -72,7 +85,7 @@ class UserController extends Controller
         //Validation
         $user->update($request->all());
 
-         return ['message' => 'Updated the user info'];
+         return ['message' => 'La información del usuario fue actualizada'];
     }
 
     /**
@@ -86,6 +99,8 @@ class UserController extends Controller
         $user = User::findOrFail($id);
 
         $user->delete();
+
+        Cuenta::where('user_id',$id)->delete();
 
         return ['message' => 'Usuario eliminado'];
     }

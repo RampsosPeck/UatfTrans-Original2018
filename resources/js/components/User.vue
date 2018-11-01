@@ -181,7 +181,7 @@
                 .then(() => {
                   $('#addNew').modal('hide');
                     swal(
-                          'Updated!',
+                          'Actualizado!',
                           'Su información fue actualizada.',
                           'success'
                         )
@@ -218,7 +218,7 @@
                       this.form.delete('api/user/'+id).then(()=>{
                         //recien envio en mensaje de respuesta
                             swal(
-                              'Deleted!',
+                              'Eliminado!',
                               'Su registro ha sido eliminado.',
                               'success'
                             ) 

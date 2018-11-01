@@ -1,23 +1,28 @@
 @extends('layouts.master')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+@section('content') 
+    <template v-if="menu==0">
+        <dashboard></dashboard>
+    </template>
+    <template v-if="menu==1">
+        <users></users>
+    </template>
+    <template v-if="menu==2">
+        <developer></developer>
+    </template>
+    <template v-if="menu==3">
+        <scan></scan>
+    </template>
+    <template v-if="menu==4">
+        @include('qrcode.qrview')
+    </template>
+    <template v-if="menu==5">
+        <report></report>
+    </template>
+    <template v-if="menu==6">
+        <help></help>
+    </template>
+    <template v-if="menu==7">
+        <android></android>
+    </template>
 @endsection
